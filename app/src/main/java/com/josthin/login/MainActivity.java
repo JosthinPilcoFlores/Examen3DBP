@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView logoImageView = findViewById(R.id.LogoImageView);
         logoImageView.setAnimation(animation1);
-        new Handler().postDelayed(() -> {
-            hello.start();
-        }, 2000);
+        new Handler().postDelayed(() -> hello.start(), 2000);
 
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
