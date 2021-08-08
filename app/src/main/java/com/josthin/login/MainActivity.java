@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer hello;
+    MediaPlayer message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Add Multimedia
         hello = MediaPlayer.create(this, R.raw.hello);
+        message = MediaPlayer.create(this, R.raw.message);
         //Add Animations
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
 
@@ -28,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             hello.start();
         }, 2000);
-        
+
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            message.start();
             startActivity(intent);
             finish();
         }, 4000);
