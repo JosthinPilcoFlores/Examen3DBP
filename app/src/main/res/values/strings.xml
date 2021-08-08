@@ -7,4 +7,8 @@
     <string name="password">Password</string>
     <string name="Login">Login</string>
     <string name="sign_up">Sign Up</string>
+    <string name="sign_up_mayus">SIGN UP</string>
+    <string name="WriteEmail">Write E-Mail</string>
+    <string name="register">Register</string>
+    <string name="WritePassword">Write Password</string>
 </resources>
