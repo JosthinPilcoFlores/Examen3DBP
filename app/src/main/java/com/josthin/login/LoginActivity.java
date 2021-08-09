@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     e_mail.setError(null);
                     password.setError(null);
                     login.start();
-                    Toast.makeText(this, "Campos Correctos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
                     i2.putExtra("Id",ux.getId());
                     startActivity(i2);
                     finish();
