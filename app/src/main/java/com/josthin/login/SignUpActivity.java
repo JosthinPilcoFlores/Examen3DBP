@@ -11,9 +11,10 @@ import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     MediaPlayer login;
     private EditText email, password;
+    daoUsuario dao;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         //1 digito
@@ -38,58 +39,42 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         Button buttonRegister = findViewById(R.id.button4);
-        buttonRegister.setOnClickListener((View v) -> goToLoginActivity());
         login = MediaPlayer.create(this, R.raw.message);
         email = findViewById(R.id.EmailRegister);
         password = findViewById(R.id.PasswordRegister);
+        buttonRegister.setOnClickListener(this);
+        dao = new daoUsuario(this);
     }
-    private void goToLoginActivity(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        if (!validateEmail()){
-            confirmInput();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button4:
+                Usuario u = new Usuario();
+                u.setEmail(email.getText().toString());
+                u.setPassword(password.getText().toString());
+                if (!u.isNull()){
+                    Toast.makeText(this, "ERROR: Campos vacíos", Toast.LENGTH_LONG).show();
+                    email.setError("Campo Vacío");
+                    password.setError("Campo vacío");
+                } else if (!EMAIL_ADDRESS.matcher(u.getEmail()).matches()){
+                    Toast.makeText(this, "ERROR: E-mail no válido", Toast.LENGTH_LONG).show();
+                    email.setError("Email inválido, ej: persona@gmail.com");
+                } else if (!PASSWORD_PATTERN.matcher(u.getPassword()).matches()){
+                    Toast.makeText(this, "ERROR: Contraseña muy débil", Toast.LENGTH_LONG).show();
+                    password.setError("Minimo: 1 minúscula, 1 mayúscula, 1 símbolo, 1 dígito y 6 caracteres");
+                }else if (dao.insertUsuario(u)){
+                    Intent i2 = new Intent(SignUpActivity.this, LoginActivity.class);
+                    email.setError(null);
+                    password.setError(null);
+                    Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_LONG).show();
+                    login.start();
+                    startActivity(i2);
+                    finish();
+                } else {
+                    Toast.makeText(this, "Usuario ya registrado", Toast.LENGTH_LONG).show();
+                    email.setError("Usuario ya registrado");
+                    password.setError("Usuario ya registrado");
+                }
         }
-        if (!validatePassword()){
-            confirmInput();
-        }
-        if (validateEmail() && validatePassword()){
-            Toast.makeText(this, "Inicie sesión con su e-mail", Toast.LENGTH_SHORT).show();
-            login.start();
-            startActivity(intent);
-        }
-    }
-    private boolean validatePassword(){
-        String passwordInput = password.getText().toString().trim();
-        if (passwordInput.isEmpty()){
-            password.setError("Campo Vacío");
-            return false;
-        } else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()){
-            password.setError("Contraseña invalida");
-            return false;
-        }else {
-            password.setError(null);
-            return true;
-        }
-    }
-    private boolean validateEmail(){
-        String emailImput = email.getText().toString().trim();
-        if (emailImput.isEmpty()){
-            email.setError("Campo Vacío");
-            return false;
-        } else if (!EMAIL_ADDRESS.matcher(emailImput).matches()){
-            email.setError("Ingrese un e-mail válido");
-            return false;
-        } else {
-            email.setError(null);
-            return true;
-        }
-    }
-    private void confirmInput(){
-        if (!validateEmail() | !validatePassword()){
-            return;
-        }
-        String input = "Email: " + email.getText().toString();
-        input += "\n";
-        input += "Password: " + password.getText().toString();
-        Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
     }
 }
