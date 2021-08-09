@@ -2,7 +2,7 @@ package com.josthin.login;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     password.setError("Minimo: 1 minúscula, 1 mayúscula, 1 símbolo, 1 dígito y 6 caracteres");
                 }else if (dao.login(u,p) == 1){
                     Usuario ux = dao.getUsuario(u,p);
-                    Intent i2 = new Intent(LoginActivity.this, ChatsActivity.class);
+                    Intent i2 = new Intent(LoginActivity.this, VoiceGirlIntroductionActivity.class);
                     e_mail.setError(null);
                     password.setError(null);
                     login.start();
