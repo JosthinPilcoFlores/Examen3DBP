@@ -12,4 +12,9 @@
     <string name="register">Register</string>
     <string name="WritePassword">Write Password</string>
     <string name="skip">Skip</string>
+    <string name="EnterMsg">Enter message</string>
+    <string name="userMsg">User Message</string>
+    <string name="descUser">ImgUserChat</string>
+    <string name="botMsg">Bot Message</string>
+    <string name="descBot">ImgBotChat</string>
 </resources>

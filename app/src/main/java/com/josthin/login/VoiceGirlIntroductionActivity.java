@@ -17,7 +17,7 @@ public class VoiceGirlIntroductionActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice_girl_introduction);
         Button btnSkip = findViewById(R.id.skip);
-        next = MediaPlayer.create(this, R.raw.message);
+        next = MediaPlayer.create(this, R.raw.next);
         introduction = MediaPlayer.create(this, R.raw.introduccion);
         introduction.start();
         btnSkip.setOnClickListener(this);

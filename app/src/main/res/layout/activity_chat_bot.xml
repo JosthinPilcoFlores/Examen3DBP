@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatBot"
+    android:background="@color/black">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/idRVchats"
+        android:layout_above="@id/idRLMsg" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/idRLMsg"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/EnterMsg"
+            android:layout_toLeftOf="@+id/idFABSend"
+            android:layout_margin="3dp"
+            android:id="@+id/idEdtMessage"
+            android:layout_centerInParent="true"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:singleLine="true" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_send"
+            android:id="@+id/idFABSend"
+            android:layout_margin="4dp"
+            app:fabCustomSize="45dp"
+            app:backgroundTint="@color/gris"
+            app:tint="@color/white"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backMenuChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+
+</RelativeLayout>

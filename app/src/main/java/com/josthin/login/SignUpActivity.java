@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         Button buttonRegister = findViewById(R.id.button4);
-        login = MediaPlayer.create(this, R.raw.message);
+        login = MediaPlayer.create(this, R.raw.next);
         email = findViewById(R.id.EmailRegister);
         password = findViewById(R.id.PasswordRegister);
         buttonRegister.setOnClickListener(this);

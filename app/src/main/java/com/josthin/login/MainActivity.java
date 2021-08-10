@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Add Multimedia
         hello = MediaPlayer.create(this, R.raw.hello);
-        message = MediaPlayer.create(this, R.raw.message);
+        message = MediaPlayer.create(this, R.raw.next);
         //Add Animations
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
 

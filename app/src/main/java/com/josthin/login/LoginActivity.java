@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        login = MediaPlayer.create(this, R.raw.message);
+        login = MediaPlayer.create(this, R.raw.next);
         Button buttonLogin = findViewById(R.id.button1);
         Button buttonSignUp = findViewById(R.id.button2);
         e_mail = findViewById(R.id.EmailAddress);
