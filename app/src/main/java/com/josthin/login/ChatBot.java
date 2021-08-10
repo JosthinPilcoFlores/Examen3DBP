@@ -54,54 +54,9 @@ public class ChatBot extends AppCompatActivity {
             if (userMsgEdt.getText().toString().isEmpty()){
                 Toast.makeText(ChatBot.this, "Please enter your next", Toast.LENGTH_SHORT).show();
                 return;
-            }else {
-                i += 1;
-                switch (i){
-                    case 1:
-                        chatsModalArrayList.add(new ChatsModal(userMsgEdt.getText().toString(),USER_KEY));
-                        userMsgEdt.setText("");
-                        chatsModalArrayList.add(new ChatsModal("Hey!",BOT_KEY));
-                        chatsModalArrayList.add(new ChatsModal("Hola!",BOT_KEY));
-                        chatRVAdapter.notifyDataSetChanged();
-                        break;
-                    case 2:
-                        chatsModalArrayList.add(new ChatsModal(userMsgEdt.getText().toString(),USER_KEY));
-                        userMsgEdt.setText("");
-                        chatsModalArrayList.add(new ChatsModal("Una pregunta común, te enseño...",BOT_KEY));
-                        chatsModalArrayList.add(new ChatsModal("¿Viste lo que hizo el batedia? Que horror!",BOT_KEY));
-                        chatRVAdapter.notifyDataSetChanged();
-                        break;
-                    case 3:
-                        chatsModalArrayList.add(new ChatsModal(userMsgEdt.getText().toString(),USER_KEY));
-                        userMsgEdt.setText("");
-                            chatsModalArrayList.add(new ChatsModal("Tus compañeros deben estar pensando que es actuado",BOT_KEY));
-                            chatsModalArrayList.add(new ChatsModal("jajajj",BOT_KEY));
-                        chatRVAdapter.notifyDataSetChanged();
-                        break;
-                    case 4:
-                        chatsModalArrayList.add(new ChatsModal(userMsgEdt.getText().toString(),USER_KEY));
-                        userMsgEdt.setText("");
-                            chatsModalArrayList.add(new ChatsModal("Curioso que intentes programar algo que tú ya eres",BOT_KEY));
-                            chatsModalArrayList.add(new ChatsModal(":3",BOT_KEY));
-                        chatRVAdapter.notifyDataSetChanged();
-                        break;
-                    case 5:
-                        chatsModalArrayList.add(new ChatsModal(userMsgEdt.getText().toString(),USER_KEY));
-                        userMsgEdt.setText("");
-                            chatsModalArrayList.add(new ChatsModal("¿No te fijaste en la similitud de tu cerebro con la electrónica?",BOT_KEY));
-                            chatsModalArrayList.add(new ChatsModal("Digo, jajajj",BOT_KEY));
-                        chatsModalArrayList.add(new ChatsModal("Perdón me tengo que ir, háblame luego",BOT_KEY));
-                        chatRVAdapter.notifyDataSetChanged();
-                        break;
-                    default:
-                        Intent intent = new Intent(ChatBot.this, MenuApp.class);
-                        back.start();
-                        startActivity(intent);
-                        break;
-                }
             }
-            //getResponse(userMsgEdt.getText().toString());
-            //userMsgEdt.setText("");
+            getResponse(userMsgEdt.getText().toString());
+            userMsgEdt.setText("");
         });
     }
     private void getResponse(String message){
@@ -121,7 +76,7 @@ public class ChatBot extends AppCompatActivity {
             public void onResponse(Call<MsgModal> call, Response<MsgModal> response) {
                 if (response.isSuccessful()){
                     MsgModal modal = response.body();
-                    chatsModalArrayList.add(new ChatsModal("Hey!",BOT_KEY));
+                    chatsModalArrayList.add(new ChatsModal(modal.getCnt(),BOT_KEY));
                     chatRVAdapter.notifyDataSetChanged();
                 }
             }
