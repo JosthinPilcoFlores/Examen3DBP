@@ -17,4 +17,15 @@
     <string name="descUser">ImgUserChat</string>
     <string name="botMsg">Bot Message</string>
     <string name="descBot">ImgBotChat</string>
+    <string name="chatBot">ChatBot</string>
+    <string name="history">Historias</string>
+    <string name="imgChatBot">ImgChatBot</string>
+    <string name="imgHistory">ImgHistory</string>
+    <string name="chats">Chatea con otras personas</string>
+    <string name="help">Help?</string>
+    <string name="coming">Coming Soon</string>
+    <string name="malvado">Vampiro Malvado</string>
+    <string name="vampiro">Vampiro Amigable</string>
+    <string name="acampar">Acampada</string>
+    <string name="teo">Conoce a Teo, sera una IA próximamente</string>
 </resources>
